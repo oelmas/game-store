@@ -4,9 +4,11 @@ import {
   Image,
   Divider,
   Heading,
+  HStack,
 } from "@chakra-ui/react";
 import type { Game } from "../hooks/useGames";
 import { PlatformIconList } from "./PlatformIconList";
+import CriticScore from "./CriticScore";
 
 interface Props {
   game: Game;
@@ -33,9 +35,12 @@ const GameCard = ({ game }: Props) => {
         objectFit="cover"
       />
       <Divider />
-      <PlatformIconList
-        platforms={game.parent_platforms.map(({ platform }) => platform)}
-      />
+      <HStack justifyContent="space-between" marginX={2} marginY={1}>
+        <PlatformIconList
+          platforms={game.parent_platforms.map(({ platform }) => platform)}
+        />
+        <CriticScore score={game.metacritic} />
+      </HStack>
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
       </CardBody>
