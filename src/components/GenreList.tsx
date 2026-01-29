@@ -1,5 +1,6 @@
-import { Spinner } from "@chakra-ui/react";
+import { List, ListItem, Spinner, Image } from "@chakra-ui/react";
 import useGenres from "../hooks/useGenres";
+import getCroppedImageUrl from "../services/image-url";
 
 const GenreList = () => {
 	const { data: genres, error, isLoading } = useGenres();
@@ -8,11 +9,19 @@ const GenreList = () => {
 	if (isLoading) return <Spinner />;
 
 	return (
-		<ul>
+		<List>
 			{genres.map((genre) => (
-				<li key={genre.id}>{genre.name}</li>
+				<ListItem key={genre.id}>
+					<Image
+						src={getCroppedImageUrl(genre.image_background)}
+						objectFit="cover"
+						boxSize="42px"
+						borderRadius="8px"
+					/>
+					{genre.name}
+				</ListItem>
 			))}
-		</ul>
+		</List>
 	);
 };
 
