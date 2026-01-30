@@ -1,6 +1,6 @@
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import GameCard from "./GameCard";
-import GameCardSkleton from "./GameCardSkleton";
+import GameCardSkeleton from "./GameCardSkeleton";
 import useGames from "../hooks/useGames";
 import type { GameQuery } from "../App";
 
@@ -21,7 +21,7 @@ const GameGrid = ({ gameQuery }: Props) => {
           spacing={4}
         >
           {Array.from({ length: 15 }).map((_, index) => (
-            <GameCardSkleton key={index} />
+            <GameCardSkeleton key={index} />
           ))}
         </SimpleGrid>
       )}
