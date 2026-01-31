@@ -1,11 +1,11 @@
-import type { GameQuery } from "../App";
+import type { GameQuery } from "../types";
 import useData from "./useData";
 
-export interface Platform {
+export type Platform = {
   id: number;
   name: string;
   slug: string;
-}
+};
 
 export type Game = {
   id: number;
@@ -13,6 +13,7 @@ export type Game = {
   background_image: string;
   parent_platforms: { platform: Platform }[];
   metacritic: number;
+  rating_top: number;
 };
 
 const useGames = (gameQuery: GameQuery) =>
