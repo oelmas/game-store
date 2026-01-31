@@ -30,9 +30,13 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 				variant="ghost"
 				size="sm"
 				justifyContent="flex-start"
-				colorScheme="gray"
-				onClick={() => onSelectGenre(null)}
+				colorScheme="gray.900"
+				onClick={() => {
+					if (selectedGenre !== null) onSelectGenre(null);
+				}}
 				fontWeight={selectedGenre === null ? "bold" : "normal"}
+				marginTop={5}
+				marginBottom={5}
 			>
 				All Genres
 			</Button>
