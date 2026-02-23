@@ -10,6 +10,7 @@ import {
 import useGenres from "../hooks/useGenres";
 import getCroppedImageUrl from "../services/image-url";
 import type { Genre } from "../hooks/useGenres";
+import type { FetchResponse } from "../hooks/useData";
 
 interface Props {
 	onSelectGenre: (genre: Genre | null) => void;
@@ -41,7 +42,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: Props) => {
 				All Genres
 			</Button>
 			<List marginY={2}>
-				{displayGenres.map((genre) => (
+				{(displayGenres as FetchResponse<Genre>)?.results?.map((genre) => (
 					<ListItem key={genre.id} paddingY="5px">
 						<HStack>
 							<Image
